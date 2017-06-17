@@ -4,15 +4,15 @@ using UnityEngine.EventSystems;
 using System;
 
 public class JumpButtonScript : MonoBehaviour, IPointerUpHandler, IPointerDownHandler {
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerDown(PointerEventData data)
     {
-        if (PlayerJumpScript.instance!=null)
+        if (PlayerJumpScript.instance != null)
         {
             PlayerJumpScript.instance.SetPower(true);
         }
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public void OnPointerUp(PointerEventData data)
     {
         if (PlayerJumpScript.instance != null)
         {

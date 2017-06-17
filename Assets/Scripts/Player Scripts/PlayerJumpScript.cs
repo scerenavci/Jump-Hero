@@ -29,7 +29,7 @@ public class PlayerJumpScript : MonoBehaviour
 
     void Update()
     {
-        SetPower();
+        SetPower(); //Because we want to set this each frame
     }
 
     void Initialize()
@@ -48,7 +48,6 @@ public class PlayerJumpScript : MonoBehaviour
 
     public void SetPower()
     {
-        this.setPower = setPower;
 
         if (setPower)
         {
@@ -79,14 +78,14 @@ public class PlayerJumpScript : MonoBehaviour
     void Jump()
     {
         myBody.velocity = new Vector2(forceX, forceY);
-        forceX = forceY = 0;
+        forceX = forceY = 0f;
         didJump = true;
     }
 
     void OnTriggerEnter2D(Collider2D target)
     {
         
-        if (didJump)
+        if (didJump) // we don't want to call that collision if we didn't jump previously
         {
             didJump = false;
             if (target.tag == "Platform")
