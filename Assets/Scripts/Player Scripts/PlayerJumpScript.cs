@@ -90,7 +90,10 @@ public class PlayerJumpScript : MonoBehaviour
             didJump = false;
             if (target.tag == "Platform")
             {
-                Debug.Log("Landed on Platform After Jumping");
+                if (GameManager.instance != null)
+                {
+                    GameManager.instance.CreateNewPlatformAndLLerp(target.transform.position.x);
+                }
             }
         }
     }
