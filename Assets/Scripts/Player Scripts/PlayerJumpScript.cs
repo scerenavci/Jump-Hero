@@ -96,5 +96,14 @@ public class PlayerJumpScript : MonoBehaviour
                 }
             }
         }
+
+        if (target.tag == "Dead")
+        {
+            if (GameOverManager.instance != null)
+            {
+                GameOverManager.instance.GameOverShowPanel();
+                Destroy(gameObject);
+            }
+        }
     }
 }
