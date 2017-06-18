@@ -11,6 +11,7 @@ public class GameOverManager : MonoBehaviour
     private GameObject gameOverPanel;
     private Animator gameOverAnim;
 
+    private GameObject scoreText;
     private Button playAgainBtn, backBtn;
     private Text finalScore;
 
@@ -28,7 +29,10 @@ public class GameOverManager : MonoBehaviour
 
     public void GameOverShowPanel()
     {
+        scoreText.SetActive(false);
         gameOverPanel.SetActive(true);
+
+        finalScore.text = "Score\n" + "" + ScoreManager.instance.GetScore();
         gameOverAnim.Play("FadeIn");
     }
     void InitializeVariables()
@@ -37,11 +41,12 @@ public class GameOverManager : MonoBehaviour
         gameOverAnim = gameOverPanel.GetComponent<Animator>();
 
         playAgainBtn = GameObject.Find("Play Again Button").GetComponent<Button>();
-        backBtn = GameObject.Find("Back  Button").GetComponent<Button>();
-        finalScore = GameObject.Find("Final Score Text").GetComponent<Text>();
+        backBtn = GameObject.Find("Back Button").GetComponent<Button>();
+
+        scoreText =GameObject.Find("Score Text");
+        finalScore = GameObject.Find("Game Over Score").GetComponent<Text>();
 
         playAgainBtn.onClick.AddListener(() => PlayAgain());
-
         backBtn.onClick.AddListener(() => BackToMenu());
 
         gameOverPanel.SetActive(false);
@@ -50,7 +55,7 @@ public class GameOverManager : MonoBehaviour
 
     public void PlayAgain()
     {
-        Application.LoadLevel(Application.loadedLevel);
+        Application.LoadLevel(Application.loadedLevelName);
     } //PlayAgain
 
     public void BackToMenu()

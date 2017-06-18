@@ -95,6 +95,11 @@ public class PlayerJumpScript : MonoBehaviour
                     GameManager.instance.CreateNewPlatformAndLLerp(target.transform.position.x);
                 }
             }
+            if (ScoreManager.instance != null)
+            {
+                ScoreManager.instance.IncrementScore();
+            }
+            
         }
 
         if (target.tag == "Dead")
