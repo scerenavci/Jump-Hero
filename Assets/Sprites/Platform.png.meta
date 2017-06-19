@@ -1,11 +1,11 @@
 fileFormatVersion: 2
 guid: e6844af1b85a0bc4ea51cdbe0d84b96d
-timeCreated: 1495984396
+timeCreated: 1497890072
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: Platform_0
-    21300002: Platform_1
+    21300000: UI Power Front
+    21300002: UI Power Back
     21300004: Platform
   serializedVersion: 2
   mipmaps:
@@ -58,7 +58,7 @@ TextureImporter:
     allowsAlphaSplitting: 0
   spriteSheet:
     sprites:
-    - name: Platform_0
+    - name: UI Power Front
       rect:
         serializedVersion: 2
         x: 8
@@ -68,7 +68,7 @@ TextureImporter:
       alignment: 0
       pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: Platform_1
+    - name: UI Power Back
       rect:
         serializedVersion: 2
         x: 29

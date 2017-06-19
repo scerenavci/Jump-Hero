@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class PlayerJumpScript : MonoBehaviour
 {
@@ -21,6 +22,10 @@ public class PlayerJumpScript : MonoBehaviour
 
     private bool didJump, setPower;
 
+    private Slider PowerBar;
+    private float PowerBarTreshold = 10f;
+    private float PowerBarValue = 0f;
+
     void Awake()
     {
         MakeInstance();
@@ -34,8 +39,13 @@ public class PlayerJumpScript : MonoBehaviour
 
     void Initialize()
     {
+        PowerBar = GameObject.Find("Power Bar").GetComponent<Slider>();
         myBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+
+        PowerBar.minValue = 0f;
+        PowerBar.maxValue = 10f;
+        PowerBar.value = PowerBarValue;
 
     }
     void MakeInstance()
@@ -62,6 +72,8 @@ public class PlayerJumpScript : MonoBehaviour
         else
             Debug.Log("We Are Not Settig The Power");
 
+        PowerBarValue += PowerBarTreshold * Time.deltaTime;
+        PowerBar.value = PowerBarValue;
 
     }
 
@@ -80,6 +92,11 @@ public class PlayerJumpScript : MonoBehaviour
         myBody.velocity = new Vector2(forceX, forceY);
         forceX = forceY = 0f;
         didJump = true;
+
+        anim.SetBool("Jump", didJump);
+
+        PowerBarValue = 0f;
+        PowerBar.value = PowerBarValue;
     }
 
     void OnTriggerEnter2D(Collider2D target)
@@ -88,6 +105,9 @@ public class PlayerJumpScript : MonoBehaviour
         if (didJump) // we don't want to call that collision if we didn't jump previously
         {
             didJump = false;
+
+            anim.SetBool("Jump", didJump);
+
             if (target.tag == "Platform")
             {
                 if (GameManager.instance != null)
