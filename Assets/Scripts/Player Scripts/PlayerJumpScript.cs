@@ -113,13 +113,14 @@ public class PlayerJumpScript : MonoBehaviour
                 if (GameManager.instance != null)
                 {
                     GameManager.instance.CreateNewPlatformAndLLerp(target.transform.position.x);
+                    target.tag = "Jumped";
+                }
+                if (ScoreManager.instance != null)
+                {
+                    ScoreManager.instance.IncrementScore();
                 }
             }
-            if (ScoreManager.instance != null)
-            {
-                ScoreManager.instance.IncrementScore();
-            }
-            
+         
         }
 
         if (target.tag == "Dead")

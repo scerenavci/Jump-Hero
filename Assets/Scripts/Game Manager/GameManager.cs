@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
 
         Instantiate(platform, temp, Quaternion.identity); // Create a clone
 
+        GameObject.Find("Platform(Clone)").tag = "Jumped";
+
         temp.y += 2f; //for position our player initially above the first platform
 
         Instantiate(player, temp, Quaternion.identity);
