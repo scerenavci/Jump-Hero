@@ -68,12 +68,14 @@ public class PlayerJumpScript : MonoBehaviour
                 forceX = 6.5f;
             if (forceY > 13.5f)
                 forceY = 6.5f;
+
+            PowerBarValue += PowerBarTreshold * Time.deltaTime;
+            PowerBar.value = PowerBarValue;
         }
         else
             Debug.Log("We Are Not Settig The Power");
 
-        PowerBarValue += PowerBarTreshold * Time.deltaTime;
-        PowerBar.value = PowerBarValue;
+        
 
     }
 
