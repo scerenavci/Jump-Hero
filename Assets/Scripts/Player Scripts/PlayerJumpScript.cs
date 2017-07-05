@@ -67,7 +67,7 @@ public class PlayerJumpScript : MonoBehaviour
             if (forceX > 6.5f)
                 forceX = 6.5f;
             if (forceY > 13.5f)
-                forceY = 6.5f;
+                forceY = 13.5f;
 
             PowerBarValue += PowerBarTreshold * Time.deltaTime;
             PowerBar.value = PowerBarValue;
